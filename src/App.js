@@ -8,20 +8,17 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch(
-      "https://url-shortner-backend-production-6c89.up.railway.app/shorten/",
-      {
-        credentials: "include",
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          longurl,
-        }),
-      }
-    )
+    fetch("https://url-shorty.up.railway.app/shorten/", {
+      credentials: "include",
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        longurl,
+      }),
+    })
       .then((res) => res.json())
       .then((data) => {
         setShorturl(data?.shorturl ?? "");
