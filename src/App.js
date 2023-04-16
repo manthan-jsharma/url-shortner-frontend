@@ -8,11 +8,14 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch("http://127.0.0.1:8000/shorten/", {
-      method: "POST",
-      body: JSON.stringify({ longurl: longurl }),
-      headers: { "Content-Type": "application/json" },
-    })
+    fetch(
+      "https://url-shortner-backend-production-6c89.up.railway.app/shorten",
+      {
+        method: "POST",
+        body: JSON.stringify({ longurl: longurl }),
+        headers: { "Content-Type": "application/json" },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         setShorturl(data.shorturl);
@@ -22,7 +25,7 @@ function App() {
   };
 
   return (
-    <div style={{ textAlign: "center" }}>
+    <div style={{ textAlign: "center", marginTop: "2rem" }}>
       <input
         type="text"
         name="longurl"
