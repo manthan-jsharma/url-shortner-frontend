@@ -9,17 +9,23 @@ function App() {
     e.preventDefault();
 
     fetch(
-      "https://url-shortner-backend-production-6c89.up.railway.app/shorten",
+      "https://url-shortner-backend-production-6c89.up.railway.app/shorten/",
       {
+        credentials: "include",
         method: "POST",
-        body: JSON.stringify({ longurl: longurl }),
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          longurl,
+        }),
       }
     )
       .then((res) => res.json())
       .then((data) => {
-        setShorturl(data.shorturl);
-        setReturnLongURL(data.longurl);
+        setShorturl(data?.shorturl ?? "");
+        setReturnLongURL(data?.longurl ?? "");
         setLongurl("");
       });
   };
@@ -32,21 +38,22 @@ function App() {
         value={longurl}
         onChange={(e) => setLongurl(e.target.value)}
       />
-      <button
-        type="submit"
-        onClick={(e) => handleSubmit(e)}
-        disabled={!longurl}
-      >
+      <button onClick={handleSubmit} disabled={!longurl}>
         shorten
       </button>
 
       <div>
         <p>Long URL: {returnLongURL}</p>
-        <p
-          style={{ cursor: "pointer" }}
-          onClick={() => window.open(returnLongURL)}
-        >
-          Short URL: {shorturl}
+        <p>
+          Short URL:
+          <a
+            href={returnLongURL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ marginLeft: "10px", cursor: "pointer" }}
+          >
+            {shorturl}
+          </a>
         </p>
       </div>
     </div>
