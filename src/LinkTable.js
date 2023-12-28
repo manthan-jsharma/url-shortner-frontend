@@ -51,7 +51,7 @@ const LinkTable = ({ setModal }) => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      {`${API_URL}/${item.shorturl}`}
+                      {`${item.shorturl}`}
                     </a>
                   </td>
                 </tr>
