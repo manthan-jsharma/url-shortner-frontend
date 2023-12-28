@@ -1,38 +1,390 @@
 .App {
+  width: 100%;
+  /* height: 100vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+table {
+  border: 2px solid forestgreen;
+  width: 800px;
+  height: 200px;
+}
+
+th {
+  border-bottom: 1px solid black;
+}
+
+td {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.inputContainer h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 3.5rem;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.inputContainer h1 span {
+  color: var(--primary-color);
+}
+
+.inputContainer div {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.inputContainer input {
+  width: 100%;
+  padding: 0.5rem 0.2rem 0.5rem 0;
+  text-indent: 1rem;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.inputContainer input::placeholder {
+  font-size: 0.9rem;
+}
+
+.inputContainer button {
+  padding: 0 1rem;
+  height: 3rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  color: #fff;
+  background-color: var(--primary-color);
+  border: none;
+  cursor: pointer;
+}
+
+/* Result */
+.result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+.result p {
+  color: #fff;
+  border: 1px solid var(--primary-color);
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+}
+
+.result button {
+  padding: 0.5rem 1rem;
+  color: #fff;
+  cursor: pointer;
+  background: var(--primary-color);
+  border: none;
+}
+
+.result button.copied {
+  background: #fff;
+  color: var(--primary-color);
+}
+
+.noData {
+  color: #fff;
+  font-size: 1rem;
+}
+
+/* background animate */
+@keyframes animate {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+    border-radius: 0;
+  }
+
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+    border-radius: 50%;
+  }
+}
+
+.background {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  background: #4e54c8;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.background li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  animation: animate 19s linear infinite;
+}
+
+.background li:nth-child(0) {
+  left: 65%;
+  width: 97px;
+  height: 97px;
+  bottom: -97px;
+  animation-delay: 1s;
+}
+
+.background li:nth-child(1) {
+  left: 7%;
+  width: 95px;
+  height: 95px;
+  bottom: -95px;
+  animation-delay: 2s;
+}
+
+.background li:nth-child(2) {
+  left: 41%;
+  width: 135px;
+  height: 135px;
+  bottom: -135px;
+  animation-delay: 4s;
+}
+
+.background li:nth-child(3) {
+  left: 36%;
+  width: 111px;
+  height: 111px;
+  bottom: -111px;
+  animation-delay: 3s;
+}
+
+.background li:nth-child(4) {
+  left: 35%;
+  width: 140px;
+  height: 140px;
+  bottom: -140px;
+  animation-delay: 3s;
+}
+
+.background li:nth-child(5) {
+  left: 60%;
+  width: 99px;
+  height: 99px;
+  bottom: -99px;
+  animation-delay: 11s;
+}
+
+.background li:nth-child(6) {
+  left: 74%;
+  width: 104px;
+  height: 104px;
+  bottom: -104px;
+  animation-delay: 14s;
+}
+
+.background li:nth-child(7) {
+  left: 79%;
+  width: 105px;
+  height: 105px;
+  bottom: -105px;
+  animation-delay: 3s;
+}
+
+.background li:nth-child(8) {
+  left: 51%;
+  width: 79px;
+  height: 79px;
+  bottom: -79px;
+  animation-delay: 6s;
+}
+
+.background li:nth-child(9) {
+  left: 69%;
+  width: 114px;
+  height: 114px;
+  bottom: -114px;
+  animation-delay: 17s;
+}
+
+.background li:nth-child(10) {
+  left: 71%;
+  width: 84px;
+  height: 84px;
+  bottom: -84px;
+  animation-delay: 13s;
+}
+
+.background li:nth-child(11) {
+  left: 89%;
+  width: 132px;
+  height: 132px;
+  bottom: -132px;
+  animation-delay: 34s;
+}
+
+.background li:nth-child(12) {
+  left: 2%;
+  width: 98px;
+  height: 98px;
+  bottom: -98px;
+  animation-delay: 6s;
+}
+
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: 0.5em 0 0.75em;
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: 0.35em;
+}
+
+table th,
+table td {
+  padding: 0.625em;
+  text-align: center;
+}
+
+table th {
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: 0.625em;
+  }
+
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 0.8em;
+    text-align: right;
+  }
+
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+#modal-overlay {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#modal-overlay #modal {
+  max-width: 80%;
+  width: 100%;
+  background: white;
+  height: 80vh;
+  max-height: 80vh;
+  overflow-y: scroll;
+}
+.custom-btn {
+  width: 170px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+.btn-1 {
+  background: rgb(6, 14, 131);
+  background: linear-gradient(
+    0deg,
+    rgba(6, 14, 131, 1) 0%,
+    rgba(12, 25, 180, 1) 100%
+  );
+  border: none;
+}
+.btn-1:hover {
+  background: rgb(0, 3, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 3, 255, 1) 0%,
+    rgba(2, 126, 251, 1) 100%
+  );
+}
+
+.close-btn {
+  margin: 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 0px;
+  right: 0px;
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  font-size: xx-large;
 }
