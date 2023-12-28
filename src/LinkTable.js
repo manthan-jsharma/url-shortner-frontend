@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { API_URL } from "./constant";
 
 const LinkTable = ({ setModal }) => {
   const [allUrls, setAllUrls] = useState([]);
 
   const getallUrls = () => {
-    axios
-      .post("https://nice-gray-cape-buffalo-robe.cyclic.app/fetchallurl/")
-      .then((response) => {
-        setAllUrls(response?.data);
-      });
+    axios.post(`${API_URL}/fetchallurl/`).then((response) => {
+      setAllUrls(response?.data);
+    });
   };
 
   useEffect(() => {
@@ -37,8 +36,24 @@ const LinkTable = ({ setModal }) => {
               return (
                 <tr class="">
                   <td data-label="Id">{item.id}</td>
-                  <td data-label="LongUrl">{item.longurl}</td>
-                  <td data-label="ShortUrl">{item.shorturl}</td>
+                  <td data-label="LongUrl">
+                    <a
+                      href={`${item.longurl}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {item.longurl}
+                    </a>
+                  </td>
+                  <td data-label="ShortUrl">
+                    <a
+                      href={`${API_URL}/${item.shorturl}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {`${API_URL}/${item.shorturl}`}
+                    </a>
+                  </td>
                 </tr>
               );
             })}

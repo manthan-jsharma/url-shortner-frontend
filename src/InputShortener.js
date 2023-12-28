@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 import axios from "axios";
+import { API_URL } from "./constant";
 
 const InputShortener = ({ setInputValue }) => {
   const [value, setValue] = useState("");
@@ -8,11 +9,11 @@ const InputShortener = ({ setInputValue }) => {
     // add a check for valid url // else show the error
 
     axios
-      .post("http://127.0.0.1:8000/shorten/", {
+      .post(`${API_URL}/shorten/`, {
         longurl: value,
       })
       .then((response) => {
-        setInputValue(response?.data?.shorturl);
+        setInputValue(`${API_URL}/${response?.data?.shorturl}`);
       });
   }, [setInputValue, value]);
 
